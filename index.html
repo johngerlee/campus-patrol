@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>校園雲端巡邏系統</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- QR Code 掃描套件 -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+<script src="https://unpkg.com/@supabase/supabase-js"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 15px; }
+    h2 { margin-top: 30px; }
+    button { padding: 10px; margin-top: 10px; width: 100%; }
+    input, textarea { width: 100%; margin-top: 5px; }
+    .danger { background: red; color: white; }
+  </style>
+</head>
+
+<body>
+
+<h1>📍 校園雲端巡邏系統</h1>
+
+<!-- QR Code 掃描 -->
+<h2>一、巡邏點掃描</h2>
+<div id="reader" style="width:100%"></div>
+<p>巡邏點代碼：<span id="qrResult">尚未掃描</span></p>
+
+<!-- GPS -->
+<h2>二、定位資訊</h2>
+<p id="gpsInfo">尚未取得定位</p>
+
+<!-- 拍照 / 異常回報 -->
+<h2>三、異常狀況回報</h2>
+<input type="file" id="photo" accept="image/*" capture="environment">
+<textarea id="remark" rows="3" placeholder="請輸入異常說明"></textarea>
+<button onclick="submitReport()">送出巡邏紀錄</button>
+
+<!-- 緊急求助 -->
+<h2>四、緊急求助</h2>
+<button class="danger" onclick="sendEmergency()">🚨 緊急求助</button>
+
+<script src="app.js"></script>
+</body>
+</html>
